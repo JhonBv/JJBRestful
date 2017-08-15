@@ -1,0 +1,49 @@
+package clysmauk.jjbrestful;
+
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
+
+import com.loopj.android.http.*;
+
+import cz.msebera.android.httpclient.Header;
+import org.json.*;
+
+import static clysmauk.jjbrestful.R.id.textView;
+
+public class RestActivity extends AppCompatActivity {
+    //private static final String BASE_URL = "http://p00603api.azurewebsites.net/api/bookingsList";
+    private static final String BASE_URL = "http://www.facebook.com";
+    AsyncHttpClient client;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_rest);
+        //Twitter.initialize(this);
+
+
+        client = new AsyncHttpClient();
+
+        client.get(BASE_URL, new AsyncHttpResponseHandler(){
+
+            @Override
+            public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                client.setBasicAuth("username","password/token");
+                TextView textView = (TextView) findViewById(R.id.textView);
+                textView.setText(bytes.toString());
+                //client.get("https://example.com");
+
+            }
+
+            @Override
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
+            }
+        });
+
+
+    }
+
+}

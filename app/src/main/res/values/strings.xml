@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Semantha</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="send_button">Send</string>
+    <string name="view_button">View Items</string>
+    <string name="view_rest">View Restful Items</string>
+
+    <string name="hello_world">Hello World!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="saved_high_score">10</string>
+    <integer name="saved_high_score_Default">10</integer>
+    <string name="title_activity_read_webpage_async_task">ReadWebpageAsyncTask</string>
+</resources>
