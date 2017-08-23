@@ -1,4 +1,4 @@
-package clysmauk.jjbrestful;
+package clysmauk.jjbrestful.Interfaces;
 
 import android.net.NetworkInfo;
 
