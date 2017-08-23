@@ -1,4 +1,4 @@
-package clysmauk.jjbrestful;
+package clysmauk.jjbrestful.Fragments;
 
 import android.app.Activity;
 import android.os.Build;
@@ -8,6 +8,9 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import clysmauk.jjbrestful.R;
+import clysmauk.jjbrestful.dummy.Ipsum;
 
 
 public class HeadlinesFragment extends ListFragment {

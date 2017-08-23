@@ -1,15 +1,16 @@
-package clysmauk.jjbrestful;
+package clysmauk.jjbrestful.Activities;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ItemsActivity extends AppCompatActivity implements HeadlinesFragment.OnHeadlineSelectedListener{
-    final static String ARG_POSITION = "position";
-    int mCurrentPosition = -1;
+import clysmauk.jjbrestful.Fragments.ArticleFragment;
+import clysmauk.jjbrestful.Fragments.HeadlinesFragment;
+import clysmauk.jjbrestful.R;
+
+public class ItemsActivity extends AppCompatActivity implements HeadlinesFragment.OnHeadlineSelectedListener {
+    //final static String ARG_POSITION = "position";
+    //int mCurrentPosition = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

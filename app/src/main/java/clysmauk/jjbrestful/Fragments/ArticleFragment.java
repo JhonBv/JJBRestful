@@ -1,4 +1,4 @@
-package clysmauk.jjbrestful;
+package clysmauk.jjbrestful.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,11 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import static android.R.id.message;
+import clysmauk.jjbrestful.R;
+import clysmauk.jjbrestful.dummy.Ipsum;
 
 public class ArticleFragment extends Fragment {
 
-    final static String ARG_POSITION = "position";
+    public final static String ARG_POSITION = "position";
     int mCurrentPosition = -1;
 
     @Override

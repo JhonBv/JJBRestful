@@ -1,4 +1,4 @@
-package clysmauk.jjbrestful;
+package clysmauk.jjbrestful.Activities;
 
 
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.loopj.android.http.*;
 
+import clysmauk.jjbrestful.R;
 import cz.msebera.android.httpclient.Header;
 import org.json.*;
 

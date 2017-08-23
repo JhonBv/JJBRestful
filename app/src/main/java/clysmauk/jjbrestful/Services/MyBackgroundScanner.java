@@ -1,4 +1,4 @@
-package clysmauk.jjbrestful; /**
+package clysmauk.jjbrestful.Services; /**
  * Created by barreij on 01/08/2017.
  */
 
@@ -8,8 +8,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 
 
 //JB. not this import is different from the tutorial.
@@ -20,7 +18,7 @@ import com.estimote.coresdk.service.BeaconManager;
 import java.util.List;
 import java.util.UUID;
 
-import clysmauk.jjbrestful.MainActivity;
+import clysmauk.jjbrestful.Activities.MainActivity;
 
 
 public class MyBackgroundScanner extends Application {

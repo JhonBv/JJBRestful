@@ -1,4 +1,4 @@
-package clysmauk.jjbrestful;
+package clysmauk.jjbrestful.Services;
 
 import android.app.ListActivity;
 import android.app.LoaderManager;

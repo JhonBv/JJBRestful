@@ -1,4 +1,4 @@
-package clysmauk.jjbrestful;
+package clysmauk.jjbrestful.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,16 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import clysmauk.jjbrestful.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ProductFragment.OnFragmentInteractionListener} interface
+ * {@link TestFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ProductFragment#newInstance} factory method to
+ * Use the {@link TestFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProductFragment extends Fragment {
+public class TestFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +31,7 @@ public class ProductFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ProductFragment() {
+    public TestFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +41,11 @@ public class ProductFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ProductFragment.
+     * @return A new instance of fragment TestFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ProductFragment newInstance(String param1, String param2) {
-        ProductFragment fragment = new ProductFragment();
+    public static TestFragment newInstance(String param1, String param2) {
+        TestFragment fragment = new TestFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +66,7 @@ public class ProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product, container, false);
+        return inflater.inflate(R.layout.fragment_test, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

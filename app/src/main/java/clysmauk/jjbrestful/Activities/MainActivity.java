@@ -1,4 +1,4 @@
-package clysmauk.jjbrestful;
+package clysmauk.jjbrestful.Activities;
 
 
 
@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 
-import java.io.IOException;
+import clysmauk.jjbrestful.Services.GetWeatherTask;
+import clysmauk.jjbrestful.R;
 
 
 public class MainActivity extends AppCompatActivity {
