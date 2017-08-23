@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Semantha</string>
     <string name="edit_message">Enter a message</string>
+
+    <!-- Buttons -->
     <string name="send_button">Send</string>
     <string name="view_button">View Items</string>
     <string name="view_rest">View Restful Items</string>
+    <string name="view_Login">Log me in</string>
 
     <string name="hello_world">Hello World!</string>
 

@@ -20,21 +20,19 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "clysmauk.jjbrestful.MESSAGE";
 
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String myUrl = "https://raw.github.com/square/okhttp/master/README.md";
-        GetExample example = new GetExample();
+
+        String url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3544536a2002311973187dfabd49e876";
 
 
-            //String mmme = example.run(myUrl);
 
-        String response = "I will obtain info from Semantha Graph!";
+        //String response = "I will obtain info from Semantha Graph!";
 
         TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(response);
+        new GetWeatherTask(textView).execute(url);
+        //textView.setText(response);
 
     }//end of onCreate()
     //###########################

@@ -13,8 +13,8 @@ import org.json.*;
 import static clysmauk.jjbrestful.R.id.textView;
 
 public class RestActivity extends AppCompatActivity {
-    //private static final String BASE_URL = "http://p00603api.azurewebsites.net/api/bookingsList";
-    private static final String BASE_URL = "http://www.facebook.com";
+    private static final String BASE_URL = "http://p00603api.azurewebsites.net/token";
+    //private static final String BASE_URL = "http://www.facebook.com";
     AsyncHttpClient client;
 
     @Override
@@ -30,10 +30,19 @@ public class RestActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
-                client.setBasicAuth("username","password/token");
+                client.addHeader("Accept","application/json");
+                client.addHeader("Content-Type","application/json");
+                client.addHeader("grant_type","password");
+
+                client.setBasicAuth("jhon.barreiro+13@gmail.com","MyN!c3P@ss");
+
+
+                String _content;
+                //_content = o["access_token"].ToString();
+
                 TextView textView = (TextView) findViewById(R.id.textView);
                 textView.setText(bytes.toString());
-                //client.get("https://example.com");
+                /* client.get("https://example.com"); */
 
             }
 
@@ -41,7 +50,7 @@ public class RestActivity extends AppCompatActivity {
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
 
             }
-        });
+        });//end of client.get({})
 
 
     }

@@ -7,6 +7,8 @@ import android.view.View;
 
 import android.widget.TextView;
 
+import com.loopj.android.http.RequestParams;
+
 public class DisplayMessageActivity extends AppCompatActivity {
 
     @Override
@@ -39,5 +41,14 @@ public class DisplayMessageActivity extends AppCompatActivity {
     }//end of viewItems()
     //###########################
 
+public void LogmeIn(View view){
+
+
+Login logmein = new Login();
+
+
+
+}//end LogmeIn()
+// ###########################
 
 }//end of Class
