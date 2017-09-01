@@ -8,44 +8,57 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="179dp"
+        android:layout_width="322dp"
         android:layout_height="44dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintHorizontal_bias="0.502"
+        android:layout_marginTop="6dp"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/view_button"
-        android:layout_width="167dp"
-        android:layout_height="39dp"
+        android:layout_width="322dp"
+        android:layout_height="42dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:onClick="viewItems"
         android:text="@string/view_button"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteY="69dp"
-        tools:layout_editor_absoluteX="77dp"
-        app:layout_constraintHorizontal_bias="0.501" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/gotoRestfulButton"
+        android:layout_width="322dp"
+        android:layout_height="42dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:onClick="viewRestItems"
         android:text="@string/view_rest"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_button" />
+
+    <Button
+        android:id="@+id/gotoProdsButton"
+        android:layout_width="322dp"
+        android:layout_height="42dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="LogmeIn"
+        android:text="@string/button_goto_Login"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gotoRestfulButton" />
 
 
 </android.support.constraint.ConstraintLayout>

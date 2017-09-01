@@ -1,7 +1,8 @@
-package clysmauk.jjbrestful.Services;
+package clysmauk.jjbrestful.Networking;
 
 import android.os.AsyncTask;
-import android.widget.TextView;
+
+import com.loopj.android.http.HttpGet;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,24 +14,37 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.NameValuePair;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
+import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 /**
- * Created by barreij on 22/08/2017.
+ * Created by barreij on 01/09/2017.
  */
 
-public class GetWeatherTask extends AsyncTask<String, Void, String> {
-
-    private TextView textView;
-
-    public GetWeatherTask(TextView textView) {
-        this.textView = textView;
-    }//end of GetWeatherTask()
-
+public class APIUserProfileClient extends AsyncTask<String, Void, ArrayList<String>> {
     @Override
-    protected String doInBackground(String... strings) {
-        String weather = "UNDEFINED";
+    protected ArrayList<String> doInBackground(String... params) {
+
+        return null;
+    }
+
+    // HTTP POST request
+    private String GetProfile() throws Exception {
+
+        String _url = "http://p00603api.azurewebsites.net/api/User/MyProfile";
+        String myresponse = "UNDEFINED";
+
         try {
-            URL url = new URL(strings[0]);
+            URL url = new URL(_url);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
             urlConnection.addRequestProperty("Accept","application/json");
@@ -49,20 +63,16 @@ public class GetWeatherTask extends AsyncTask<String, Void, String> {
 
             JSONObject topLevel = new JSONObject(builder.toString());
             JSONObject main = topLevel.getJSONObject("main");
-            weather = String.valueOf(main.getDouble("temp"));
+            myresponse = String.valueOf(main.getDouble("temp"));
 
 
             urlConnection.disconnect();
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-        return weather;
 
-    }//end doInBackground()
 
-    @Override
-    protected void onPostExecute(String temp) {
-        textView.setText("Current Weather: " + temp);
-    }//end onPostExecute()
-
-}//end class
+        //JB. Return the returned Token!
+        return myresponse;
+    }
+}

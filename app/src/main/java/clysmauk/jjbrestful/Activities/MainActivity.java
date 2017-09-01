@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 
-import clysmauk.jjbrestful.Services.GetWeatherTask;
+import clysmauk.jjbrestful.Networking.myhttpClient;
 import clysmauk.jjbrestful.R;
 
 
@@ -25,14 +25,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3544536a2002311973187dfabd49e876";
+        String url = "http://p00603api.azurewebsites.net/token";//"http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3544536a2002311973187dfabd49e876";
 
 
 
         //String response = "I will obtain info from Semantha Graph!";
 
         TextView textView = (TextView) findViewById(R.id.textView);
-        new GetWeatherTask(textView).execute(url);
+        //new GetWeatherTask(textView).execute(url);
+        new myhttpClient(textView).execute(url);
         //textView.setText(response);
 
     }//end of onCreate()

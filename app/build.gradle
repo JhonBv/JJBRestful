@@ -28,7 +28,6 @@ dependencies {
     })
 
     //JB. below is to perform async http calls
-    
 
 
     compile 'com.android.support:appcompat-v7:25.3.1'

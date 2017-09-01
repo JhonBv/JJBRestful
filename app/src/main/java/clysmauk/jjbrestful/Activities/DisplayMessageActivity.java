@@ -7,7 +7,6 @@ import android.view.View;
 
 import android.widget.TextView;
 
-import clysmauk.jjbrestful.Login;
 import clysmauk.jjbrestful.R;
 
 public class DisplayMessageActivity extends AppCompatActivity {
@@ -42,13 +41,10 @@ public class DisplayMessageActivity extends AppCompatActivity {
     }//end of viewItems()
     //###########################
 
+
 public void LogmeIn(View view){
-
-
-Login logmein = new Login();
-
-
-
+    Intent intent = new Intent(this, LoginActivity.class);
+    startActivity(intent);
 }//end LogmeIn()
 // ###########################
 
