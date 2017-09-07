@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import clysmauk.jjbrestful.Models.LoginModel;
-import clysmauk.jjbrestful.R;
+//import clysmauk.jjbrestful.R;
 import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.NameValuePair;
@@ -98,6 +98,7 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
                 builder.append(inputString);
             }
 
+            //JB. Create a Json object and obtain the result
             JSONObject topLevel = new JSONObject(builder.toString());
             //JSONObject main = topLevel.getJSONObject("");
 

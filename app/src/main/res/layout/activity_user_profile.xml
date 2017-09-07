@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="87dp"
         android:layout_height="92dp"
-        app:srcCompat="@drawable/emptyUser"
+        app:srcCompat="@drawable/emptyuser"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
