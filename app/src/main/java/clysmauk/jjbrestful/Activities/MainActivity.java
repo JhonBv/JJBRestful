@@ -27,11 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         String url = "http://p00603api.azurewebsites.net/token";//"http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=3544536a2002311973187dfabd49e876";
 
-
-
-        //String response = "I will obtain info from Semantha Graph!";
-
-        TextView textView = (TextView) findViewById(R.id.textView);
+        TextView textView = (TextView) findViewById(R.id.txtMyMessage);
         //new GetWeatherTask(textView).execute(url);
         new myhttpClient(textView).execute(url);
         //textView.setText(response);

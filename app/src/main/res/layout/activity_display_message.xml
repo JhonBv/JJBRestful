@@ -7,16 +7,17 @@
     tools:context="clysmauk.jjbrestful.Activities.DisplayMessageActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="322dp"
-        android:layout_height="44dp"
+        android:id="@+id/txtMyMessage"
+        android:layout_width="323dp"
+        android:layout_height="100dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="6dp"
         app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="15dp" />
 
     <Button
         android:id="@+id/view_button"
@@ -30,7 +31,7 @@
         app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMyMessage" />
 
     <Button
         android:id="@+id/gotoRestfulButton"

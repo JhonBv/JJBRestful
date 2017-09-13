@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtMyMessage"
         android:layout_width="338dp"
         android:layout_height="348dp"
         android:text="TextView"

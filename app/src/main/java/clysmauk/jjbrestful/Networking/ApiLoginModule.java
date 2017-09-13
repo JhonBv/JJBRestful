@@ -1,22 +1,16 @@
 package clysmauk.jjbrestful.Networking;
 
-import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.widget.EditText;
 import android.widget.TextView;
-
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-import clysmauk.jjbrestful.Models.LoginModel;
-//import clysmauk.jjbrestful.R;
 import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.NameValuePair;
@@ -25,6 +19,8 @@ import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
 import cz.msebera.android.httpclient.client.methods.HttpPost;
 import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
+
+
 
 /**
  * Created by barreij on 31/08/2017.
@@ -36,12 +32,18 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
     private TextView _myToken;
     private String ttxUsrName;
     private String ttxPsswrd;
+    private String myresponse;
+
+    //Constructor
+    public ApiLoginModule() {
+
+    }//end of Constructor
+
 
     //Constructor
     public ApiLoginModule(TextView textView) {
         this._myToken = textView;
         //this._Url = url;
-
     }//end of Constructor
 
 
@@ -49,16 +51,17 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
     protected String doInBackground(ArrayList<String>... params) {
         String daResponse = "UNDEFINED";
 
-
         ttxUsrName = params[0].get(0);
         ttxPsswrd = params[0].get(1);
 
+        //JB. Attempt to obtain today's date.
+        Date todays = new Date();
 
         try {
             daResponse = sendPost();
         } catch (Exception e) {
 
-            daResponse = e.toString();
+            daResponse = "Semantha detected an Error: " +"/n happened on" + todays.toString() +"/n"  + e.toString();
         }
 
         return daResponse;
@@ -68,7 +71,6 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
     private String sendPost() throws Exception {
 
         String url = "http://p00603api.azurewebsites.net/token";
-        String myresponse = "AJA";
 
         //JB. Declare the httpClient builder and initiate it.
         HttpClient httpClient = HttpClientBuilder.create().build();
@@ -81,7 +83,6 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
         params.add(new BasicNameValuePair("grant_type", "password"));
 
         postRequest.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-
 
         HttpResponse response = httpClient.execute(postRequest);
         HttpEntity entity = response.getEntity();
@@ -110,18 +111,19 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
                 instream.close();
             }
         }
+
+
+
         //JB. Return the returned Token!
         return myresponse;
     }
+
 
     //JB.
     @Override
     protected void onPostExecute(String temp) {
 
-
         _myToken.setText(temp);
-
-
-        //_myToken = temp;
     }//end onPostExecute()
+
 }

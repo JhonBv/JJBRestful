@@ -22,20 +22,20 @@ import clysmauk.jjbrestful.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static final String MyPREFERENCES = "MyLoginPrefs" ;
-    public static final String UserName = "usernameKey";
-    public static final String UserPassword = "passwordKey";
     private EditText usernametxt;
     private EditText passwordtxt;
+    private String aja;
 
-    SharedPreferences sharedpreferences;
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
+    private String DA_RESPONSE;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-//JB. Set the login details from EditTexts
+        //JB. Set the login details from EditTexts
         usernametxt = (EditText) findViewById(R.id.txtUsername);
         passwordtxt = (EditText) findViewById(R.id.txtPassword);
 
@@ -63,7 +63,6 @@ public class LoginActivity extends AppCompatActivity {
                     */
                     Toast.makeText(LoginActivity.this,"Your login details have been saved",Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 
@@ -85,20 +84,28 @@ public class LoginActivity extends AppCompatActivity {
 
                 //JB. Pass on the ArrayList with set properties. the txtvwReturnedToken is of type EditText  ;)
                 new ApiLoginModule(txtvwReturnedToken).execute(details);
+
+
+                aja = txtvwReturnedToken.getText().toString();
+
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putString("name", "Elena");
+                editor.putString("idToken", txtvwReturnedToken.getText().toString());
+                editor.apply();
+
+                //Loog(null);
             }
         });
 
+
+
     }//end onCreate()
 
-
     public void Loog(View view) {
-            /*
-            Intent intent = new Intent(this, DisplayMessageActivity.class);
 
-            String message = txtvwReturnedToken.getText().toString();
-            intent.putExtra("MY_TOKEN", message);
-            startActivity(intent);
-            */
+        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        intent.putExtra("MY_TOKEN", aja);
+        startActivity(intent);
     }
 }
 

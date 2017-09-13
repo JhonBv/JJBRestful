@@ -10,11 +10,6 @@ import com.loopj.android.http.*;
 import clysmauk.jjbrestful.R;
 import cz.msebera.android.httpclient.Header;
 
-
-
-
-import static clysmauk.jjbrestful.R.id.textView;
-
 public class RestActivity extends AppCompatActivity {
     private static final String BASE_URL = "http://p00603api.azurewebsites.net/token";
     //private static final String BASE_URL = "http://www.facebook.com";
@@ -43,7 +38,7 @@ public class RestActivity extends AppCompatActivity {
                 String _content;
                 //_content = o["access_token"].ToString();
 
-                TextView textView = (TextView) findViewById(R.id.textView);
+                TextView textView = (TextView) findViewById(R.id.txtMyMessage);
                 textView.setText(bytes.toString());
                 /* client.get("https://example.com"); */
 
