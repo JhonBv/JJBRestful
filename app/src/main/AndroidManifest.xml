@@ -42,7 +42,11 @@
         <activity android:name=".Activities.ItemsActivity" />
         <activity android:name=".Activities.RestActivity" />
         <activity android:name=".Activities.LoginActivity" />
-        <activity android:name=".Activities.UserActivities.UserProfileActivity"></activity>
+        <activity android:name=".Activities.UserActivities.UserProfileActivity" />
+        <activity
+            android:name=".Activities.CommandActivity"
+            android:label="@string/title_activity_command"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

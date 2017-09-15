@@ -97,8 +97,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
     }//end onCreate()
 
     public void Loog(View view) {

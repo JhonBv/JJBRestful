@@ -22,4 +22,5 @@
 
 
     <string name="My_Saved_Token"></string>
+    <string name="title_activity_command">CommandActivity</string>
 </resources>
