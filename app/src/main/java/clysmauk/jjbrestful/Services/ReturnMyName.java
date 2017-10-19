@@ -8,10 +8,10 @@ import java.util.ArrayList;
  * Created by barreij on 13/09/2017.
  */
 
-public class ReturnMyName extends AsyncTask<ArrayList<String>, Void, String> {
+public class ReturnMyName extends AsyncTask<String, Void, String> {
 
     @Override
-    protected String doInBackground(ArrayList<String>... params) {
+    protected String doInBackground(String... params) {
         return null;
     }
 
