@@ -1,3 +1,4 @@
+
 package clysmauk.jjbrestful.Activities;
 
 
@@ -10,9 +11,10 @@ import com.loopj.android.http.*;
 import clysmauk.jjbrestful.R;
 import cz.msebera.android.httpclient.Header;
 
+
 public class RestActivity extends AppCompatActivity {
-    private static final String BASE_URL = "http://p00603api.azurewebsites.net/token";
-    //private static final String BASE_URL = "http://www.facebook.com";
+    private String BASE_URL = getString(R.string.baseUrlAddress1)+getString(R.string.token);
+
     AsyncHttpClient client;
 
     @Override
@@ -49,8 +51,6 @@ public class RestActivity extends AppCompatActivity {
 
             }
         });//end of client.get({})
-
-
     }
 
 }

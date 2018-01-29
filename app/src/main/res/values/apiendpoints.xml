@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="baseUrlAddress">http://p00603clientapi.azurewebsites.net/</string>
+    <string name="token">token</string>
+    <string name="registerUser">api/account/register</string>
+    <string name="completeUserRegistration">api/User/completeRegistration\</string>
+    <string name="userProfile">api/User/myprofile</string>
+</resources>

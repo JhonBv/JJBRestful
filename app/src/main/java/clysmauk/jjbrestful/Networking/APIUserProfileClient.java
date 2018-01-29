@@ -40,7 +40,7 @@ public class APIUserProfileClient extends AsyncTask<String, Void, ArrayList<Stri
     // HTTP POST request
     private String GetProfile() throws Exception {
 
-        String _url = "http://p00603api.azurewebsites.net/api/User/MyProfile";
+        String _url = "http://p00603clientapi.azurewebsites.net/api/User/MyProfile";
         String myresponse = "UNDEFINED";
 
         try {

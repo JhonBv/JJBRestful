@@ -50,6 +50,8 @@ public class MyBackgroundScanner extends Application {
                         "Today we have new chocolate cake suitable for vegans.",
                         "Only 15 left, hurry before it ends!, "
                                );
+
+
             }
             @Override
             public void onExitedRegion(BeaconRegion region) {

@@ -1,26 +1,24 @@
 package clysmauk.jjbrestful.Networking;
 
 import android.os.AsyncTask;
-import android.widget.ListView;
 import android.widget.TextView;
-
 
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import clysmauk.jjbrestful.R.string;
 import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
 import cz.msebera.android.httpclient.client.methods.HttpPost;
-import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
@@ -38,9 +36,9 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
     private String _Url;
 
     //Constructor
-    public myhttpClient(TextView textView) {
+    public myhttpClient(TextView textView, String myUrl) {
         this._textView = textView;
-        //this._Url = url;
+        this._Url = myUrl;
 
     }//end of Constructor
 
@@ -61,7 +59,7 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
     // HTTP POST request
     private String sendPost() throws Exception {
 
-        String url = "http://p00603api.azurewebsites.net/token";
+        String url = _Url;//getString(R.string.baseUrlAddress1);//"http://p00603clientapi.azurewebsites.net/token";
         String myresponse = "AJA";
 
         //JB. Declare the httpClient builder and initiate it.
@@ -74,6 +72,7 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
         params.add(new BasicNameValuePair("password", "MyN!c3P@ss"));
         params.add(new BasicNameValuePair("grant_type", "password"));
 
+        //JB. NOTE: I am passing the entity with the x-www-form-urlencoded
         postRequest.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
 

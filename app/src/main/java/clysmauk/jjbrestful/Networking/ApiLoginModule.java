@@ -32,7 +32,8 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
     private TextView _myToken;
     private String ttxUsrName;
     private String ttxPsswrd;
-    private String myresponse;
+    private String myResponse;
+    private String _Url;
 
     //Constructor
     public ApiLoginModule() {
@@ -41,9 +42,9 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
 
 
     //Constructor
-    public ApiLoginModule(TextView textView) {
+    public ApiLoginModule(TextView textView, String myUrl) {
         this._myToken = textView;
-        //this._Url = url;
+        this._Url = myUrl;
     }//end of Constructor
 
 
@@ -70,7 +71,7 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
     // HTTP POST request
     private String sendPost() throws Exception {
 
-        String url = "http://p00603api.azurewebsites.net/token";
+        String url = _Url;
 
         //JB. Declare the httpClient builder and initiate it.
         HttpClient httpClient = HttpClientBuilder.create().build();
@@ -81,6 +82,8 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
         params.add(new BasicNameValuePair("username", ttxUsrName));
         params.add(new BasicNameValuePair("password", ttxPsswrd));
         params.add(new BasicNameValuePair("grant_type", "password"));
+        params.add(new BasicNameValuePair("client_id", "password"));
+        params.add(new BasicNameValuePair("client_secret", "password"));
 
         postRequest.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
@@ -105,7 +108,7 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
 
             try {
                 //JB. Obtain the returned token
-                myresponse = String.valueOf(topLevel.getString("access_token"));
+                myResponse = String.valueOf(topLevel.getString("access_token"));
             } finally {
                 //JB. Run regardless..
                 instream.close();
@@ -115,7 +118,7 @@ public class ApiLoginModule extends AsyncTask<ArrayList<String>, Void, String> {
 
 
         //JB. Return the returned Token!
-        return myresponse;
+        return myResponse;
     }
 
 

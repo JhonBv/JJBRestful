@@ -1,5 +1,6 @@
 package clysmauk.jjbrestful.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +11,13 @@ import android.widget.TextView;
 
 import clysmauk.jjbrestful.R;
 
-import static clysmauk.jjbrestful.Activities.LoginActivity.MY_PREFS_NAME;
+import static clysmauk.jjbrestful.Activities.LoginActivity.MyPREFERENCES;
 
 public class DisplayMessageActivity extends AppCompatActivity {
-
+    public static final String EXTRA_MESSAGE = "clysmauk.jjbrestful.MESSAGE";
     private String myName;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,18 +25,13 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         // Get the Intent that started this activity and extract the string
         Bundle bundle = getIntent().getExtras();
-        String message = bundle.getString("MY_TOKEN");
-
-        //JB Shared Preferences.
-        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String restoredText = prefs.getString("text", null);
-
-            myName = prefs.getString("name", "No name defined");//"No name defined" is the default value.
-            String idToken = prefs.getString("idToken", "nothing man!"); //0 is the default value.
+        String message = bundle.getString(EXTRA_MESSAGE);
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = (TextView) findViewById(R.id.txtMyMessage);
-        textView.setText(idToken);
+        textView.setText(message);
+
+
 
     }//end of onCreate
 

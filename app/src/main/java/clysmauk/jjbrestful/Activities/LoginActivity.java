@@ -1,8 +1,10 @@
 package clysmauk.jjbrestful.Activities;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,11 +26,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText usernametxt;
     private EditText passwordtxt;
-    private String aja;
+    private EditText txtvwReturnedToken;
 
-    public static final String MY_PREFS_NAME = "MyPrefsFile";
-    private String DA_RESPONSE;
-
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String EXTRA_MESSAGE = "clysmauk.jjbrestful.MESSAGE";
+    SharedPreferences sharedpreferences;
+    String apiUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,38 +41,37 @@ public class LoginActivity extends AppCompatActivity {
         //JB. Set the login details from EditTexts
         usernametxt = (EditText) findViewById(R.id.txtUsername);
         passwordtxt = (EditText) findViewById(R.id.txtPassword);
+        txtvwReturnedToken = (EditText) findViewById(R.id.txtToken);
+         apiUrl = getString(R.string.baseUrlAddress);
+
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         //JB. Declare the RememberMe checkBox to allow user to save details locally.
-        CheckBox rememberMe = (CheckBox) findViewById( R.id.chkRememberme );
-
+        //CheckBox rememberMe = (CheckBox) findViewById( R.id.chkRememberme );
+        final CheckBox rememberMe = (CheckBox) findViewById(R.id.chkRememberme);
         //JB. Add the OnCheckedListener so it can act once the checkbox is checked.
-        rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
-                if ( isChecked )
+                if ( rememberMe.isChecked() )
                 {
-                    /*
+
                     String un  = usernametxt.getText().toString();
                     String pss  = passwordtxt.getText().toString();
 
                     SharedPreferences.Editor editor = sharedpreferences.edit();
-
-                    editor.putString(UserName, un);
-                    editor.putString(UserPassword, pss);
+                    editor.putString("username", un);
+                    editor.putString("password", pss);
 
                     editor.commit();
-                    */
+
                     Toast.makeText(LoginActivity.this,"Your login details have been saved",Toast.LENGTH_LONG).show();
                 }
-            }
-        });
+
+
 
         Button button = (Button) findViewById(R.id.btnLogin);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText txtvwReturnedToken = (EditText) findViewById(R.id.txtToken);
+
 
                 //JB. Arraylist to store username and password
                 ArrayList<String> details = new ArrayList<String>();
@@ -82,27 +84,40 @@ public class LoginActivity extends AppCompatActivity {
                 details.add(ttusr.getText().toString());
                 details.add(ttpswr.getText().toString());
 
+                String url = apiUrl +getString(R.string.token);
+
+
                 //JB. Pass on the ArrayList with set properties. the txtvwReturnedToken is of type EditText  ;)
-                new ApiLoginModule(txtvwReturnedToken).execute(details);
+                new ApiLoginModule(txtvwReturnedToken, url).execute(details);
 
 
-                aja = txtvwReturnedToken.getText().toString();
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString("returnedToken", txtvwReturnedToken.getText().toString());
+                editor.commit();
 
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("name", "Elena");
-                editor.putString("idToken", txtvwReturnedToken.getText().toString());
-                editor.apply();
+                /*txtvwReturnedToken.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        GotoMainActivity();
+                    }
+                });*/
 
-                //Loog(null);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        GotoMainActivity();
+                    }
+                }, 3000);
             }
         });
 
     }//end onCreate()
 
-    public void Loog(View view) {
+    public void GotoMainActivity() {
 
         Intent intent = new Intent(this, DisplayMessageActivity.class);
-        intent.putExtra("MY_TOKEN", aja);
+
+        intent.putExtra(EXTRA_MESSAGE, txtvwReturnedToken.getText().toString());
         startActivity(intent);
     }
 }
