@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
+import clysmauk.jjbrestful.Activities.UserActivities.UserProfileActivity;
 import clysmauk.jjbrestful.Networking.ApiLoginModule;
 
 import clysmauk.jjbrestful.R;
@@ -115,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void GotoMainActivity() {
 
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        Intent intent = new Intent(this, UserProfileActivity.class);
 
         intent.putExtra(EXTRA_MESSAGE, txtvwReturnedToken.getText().toString());
         startActivity(intent);

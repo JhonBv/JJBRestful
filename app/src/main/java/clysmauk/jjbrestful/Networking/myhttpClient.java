@@ -1,27 +1,36 @@
 package clysmauk.jjbrestful.Networking;
 
+import android.app.VoiceInteractor;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 
 import clysmauk.jjbrestful.R.string;
 import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.HttpRequest;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
+import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.client.methods.HttpPost;
 import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
-
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by barreij on 30/08/2017.
@@ -31,6 +40,12 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
 
     //JB. Declare the list view to which data will be bound.
     private TextView _textView;
+    HttpClient httpClient;
+    HttpPost postRequest;
+    HttpGet getRequest;
+
+    String access_token;
+
 
     //JB. Declare url to RESTful API.
     private String _Url;
@@ -40,14 +55,17 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
         this._textView = textView;
         this._Url = myUrl;
 
-    }//end of Constructor
 
+    }//end of Constructor
 
     @Override
     protected String doInBackground(String... params) {
         String daResponse = "UNDEFINED";
+
         try {
-            daResponse = sendPost();
+            //GetToken();
+            access_token = GetToken();
+            daResponse = GetUserProfile(access_token);
         } catch (Exception e) {
 
             daResponse= e.toString();
@@ -57,15 +75,14 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
     }
 
     // HTTP POST request
-    private String sendPost() throws Exception {
+    private String GetToken() throws Exception {
 
-        String url = _Url;//getString(R.string.baseUrlAddress1);//"http://p00603clientapi.azurewebsites.net/token";
         String myresponse = "AJA";
 
         //JB. Declare the httpClient builder and initiate it.
-        HttpClient httpClient = HttpClientBuilder.create().build();
+        httpClient = HttpClientBuilder.create().build();
         //JB. Type of Request (post in this case)
-        HttpPost postRequest = new HttpPost(url);
+        postRequest = new HttpPost(_Url);
 
         List<NameValuePair> params = new ArrayList<NameValuePair>(3);
         params.add(new BasicNameValuePair("username", "jhon.barreiro+13@gmail.com"));
@@ -104,6 +121,34 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
         }
         //JB. Return the returned Token!
         return myresponse;
+    }
+
+    // HTTP POST request
+    private String GetUserProfile(String myToken) throws Exception {
+
+        String token = GetToken();
+        String profileEndPoint = "http://p00603clientapi.azurewebsites.net/api/User/myprofile";
+
+
+        httpClient = HttpClientBuilder.create().build();
+
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url("http://p00603clientapi.azurewebsites.net/api/User/myprofile")
+                .get()
+                .addHeader("Accept", "application/json")
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", myToken)
+                .addHeader("Cache-Control", "no-cache")
+                .build();
+
+        Response response = client.newCall(request).execute();
+
+
+
+
+        return response.message();
     }
 
     //JB.

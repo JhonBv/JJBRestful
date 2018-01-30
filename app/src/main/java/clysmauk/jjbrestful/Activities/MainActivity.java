@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         //###################################################################
         //textView.setText(response);
 
-
     }//end of onCreate()
     //###########################
 
@@ -73,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
         MyToken = sharedpreferences.getString("returnedToken", "");
 
-        //String message = editText.getText().toString();
 
         intent.putExtra(EXTRA_MESSAGE, MyToken);
         startActivity(intent);

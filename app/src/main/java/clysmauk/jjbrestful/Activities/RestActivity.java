@@ -13,7 +13,7 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class RestActivity extends AppCompatActivity {
-    private String BASE_URL = getString(R.string.baseUrlAddress1)+getString(R.string.token);
+    private String BASE_URL = getString(R.string.baseUrlAddress)+getString(R.string.token);
 
     AsyncHttpClient client;
 
