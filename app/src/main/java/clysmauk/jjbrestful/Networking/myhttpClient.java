@@ -2,7 +2,12 @@ package clysmauk.jjbrestful.Networking;
 
 import android.app.VoiceInteractor;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.widget.TextView;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,9 +20,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 import clysmauk.jjbrestful.R.string;
+import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.HttpRequest;
 import cz.msebera.android.httpclient.HttpResponse;
@@ -43,7 +50,7 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
     HttpClient httpClient;
     HttpPost postRequest;
     HttpGet getRequest;
-
+    String responsss;
     String access_token;
 
 
@@ -64,8 +71,9 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
 
         try {
             //GetToken();
-            access_token = GetToken();
+            access_token = "na00XmtlUSJzD8mCFgb_FTd1XMMb1NZ46JT7D_RrCsjLpADns8UmZkxHU9Da_nogJLKF-VhVsW4TxnikF0HZOgSH6PMUsKUAk1FBTTqQf5MO7QdX3Ln1cwBdT8W_ebSVWuwKLgeKM4EwT6YISTIPTZnCTxbXNE8hLI2FyqhKzp8SMbnMU5vUllBuLq9fr0NOVVtnaHlVS9cvOAZB4y1WXIkr9XKFrY8dA6aOy4F3WidqSNPTo1N02b6aZEREemKocAwfG_kBL42uH1A2nRlpTJeKSHcDNGrMY8POvBGOeCc668hVcgIf4ylPMx0gV6qCZzz7YObDw38OX7B6wCIkaKrfpMdvYZLBL-npC5uzm9kgmP9BqwBKpkEZYGv7PrqcePjeZ3Afr8zZemll_Pz24z_CtcITxu7A3f4XpOc73Rl3yG70FMORRoj__SOetBHaZcGWnOgx8r1BoSB-MDyuY3ApAdUKau0sIDC3_CaCeIoMavI0yyq85jw7DKpu-z75nuz4CsJNQHw1QwkRJ6SieA";
             daResponse = GetUserProfile(access_token);
+            //daResponse = GetToken();
         } catch (Exception e) {
 
             daResponse= e.toString();
@@ -126,27 +134,27 @@ public class myhttpClient extends AsyncTask<String, Void, String> {
     // HTTP POST request
     private String GetUserProfile(String myToken) throws Exception {
 
-        String token = GetToken();
+        String token = myToken;
         String profileEndPoint = "http://p00603clientapi.azurewebsites.net/api/User/myprofile";
 
 
-        httpClient = HttpClientBuilder.create().build();
+        //httpClient = HttpClientBuilder.create().build();
 
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("http://p00603clientapi.azurewebsites.net/api/User/myprofile")
+                .url(profileEndPoint)
                 .get()
+                 // connect timeout
                 .addHeader("Accept", "application/json")
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", myToken)
-                .addHeader("Cache-Control", "no-cache")
+                .header("Authorization", "Bearer "+myToken)
                 .build();
+
 
         Response response = client.newCall(request).execute();
 
-
-
+        String newResponse = response.body().toString();
 
         return response.message();
     }

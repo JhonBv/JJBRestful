@@ -100,7 +100,7 @@ public class APIUserProfileClient extends AsyncTask<String, Void, ArrayList<Stri
 
             urlConnection.addRequestProperty("Accept", "application/json");
             urlConnection.addRequestProperty("Content-Type", "application/json");
-            urlConnection.addRequestProperty("Authorization", "Bearer:" + Access_token);
+            urlConnection.addRequestProperty("Authorization", "Bearer" + Access_token);
 
             InputStream stream = new BufferedInputStream(urlConnection.getInputStream());
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
